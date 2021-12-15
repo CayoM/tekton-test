@@ -18,6 +18,10 @@ rules:
     - triggers.tekton.dev
     resources:
     - eventlisteners
+    - triggers
+    - triggertemplates
+    - triggerbindings
+    - clusterinterceptors
     verbs:
     - get
     - list
