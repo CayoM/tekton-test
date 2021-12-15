@@ -45,6 +45,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: default
+  namespace: openshift-alertmanager
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
