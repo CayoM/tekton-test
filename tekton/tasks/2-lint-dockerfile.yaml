@@ -60,6 +60,8 @@ spec:
       script: |
         HADOLINTFILE="$(params.source-dir)"/.hadolint.yaml
 
+        ls -la
+
         if [ -f "${HADOLINTFILE}" ]; then
           echo "In this step, hadolint will lint your Dockerfile, using .hadolint.yaml in your repository, with the following rules: "
           cat ${HADOLINTFILE}
@@ -71,3 +73,7 @@ spec:
           echo "For more information about hadolint please refer to https://cloudnativetoolkit.dev/"
           hadolint $(params.source-dir)/$(params.DOCKERFILE)
         fi
+
+        ls -la $(params.source-dir)
+
+        hadolint -h
