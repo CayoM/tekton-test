@@ -18,6 +18,7 @@ spec:
         generateName: $(tt.params.gitreponame)-
         annotations:
           argocd.argoproj.io/compare-options: IgnoreExtraneous
+          argocd.argoproj.io/sync-options: Prune=true
       spec:
         params: 
           - name: git-url
