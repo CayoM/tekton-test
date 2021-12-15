@@ -7,11 +7,6 @@ spec:
   triggers:
     - name: trigger-github
       interceptors:
-        # - ref:
-        #     name: "cel"
-        #   params:
-        #   - name: "filter"
-        #     value: "header['User-Agent'][0].startswith('Github')"
         - ref:
             name: "github"
             kind: ClusterInterceptor

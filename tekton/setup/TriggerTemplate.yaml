@@ -2,6 +2,8 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: trigger-generic-pipeline
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
   params:
     - name: gitrevision
