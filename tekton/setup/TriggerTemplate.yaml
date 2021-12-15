@@ -1,8 +1,14 @@
-apiVersion: triggers.tekton.dev/v1alpha1
+apiVersion: triggers.tekton.dev/v1beta1
 kind: TriggerTemplate
 metadata:
   name: trigger-generic-pipeline
 spec:
+  params:
+    - name: gitrevision
+      description: The git revision
+      default: main
+    - name: gitrepositoryurl
+      description: The git repository url
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -13,8 +19,6 @@ spec:
           - name: git-url
             value: $(tt.params.gitrepositoryurl)
           - name: git-revision
-            value: master
-          - name: revision
             value: $(tt.params.gitrevision)
         pipelineRef:
           name: generic-pipeline
