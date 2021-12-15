@@ -9,6 +9,8 @@ spec:
       default: main
     - name: gitrepositoryurl
       description: The git repository url
+    - name: gitreponame
+      description: Name of the git repository
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
