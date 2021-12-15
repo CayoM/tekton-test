@@ -18,7 +18,7 @@ spec:
             apiVersion: triggers.tekton.dev
           params:
           - name: "eventTypes"
-            value: ["push"]
+            value: ["pull_request", "push"]
       bindings:
         - ref: github-binding
       template:
