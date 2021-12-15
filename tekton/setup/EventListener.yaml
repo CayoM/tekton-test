@@ -12,6 +12,6 @@ spec:
           - name: "filter"
             value: "header.User-Agent.contains('Github')"
       bindings:
-        - name: github-binding
+        - ref: github-binding
       template:
-        name: trigger-generic-pipeline
+        ref: trigger-generic-pipeline
