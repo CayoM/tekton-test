@@ -163,7 +163,7 @@ spec:
 
         # Check Dockerfile
         if [ -f "$(params.source-dir)/Dockerfile" ]; then
-          echo -n "true" > $(results.dockerfile)
+          echo -n "true" > $(results.dockerfile.path)
         else 
           echo -n "false" > $(results.dockerfile.path)
         fi
