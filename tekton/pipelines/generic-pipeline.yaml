@@ -48,7 +48,7 @@ spec:
       taskRef:
         name: dockerfile-lint
       runAfter:
-        - test
+        - unity-tests
       params:
         - name: git-url
           value: "$(tasks.setup.results.git-url)"
