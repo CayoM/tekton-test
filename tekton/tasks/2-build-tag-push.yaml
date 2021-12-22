@@ -83,13 +83,22 @@ spec:
             secretKeyRef:
               name: registry-access
               key: username
-              optional: true
         - name: REGISTRY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: registry-access
               key: password
+        - name: REGISTRY_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: project-params
+              key: REGISTRY_SERVER
               optional: true
+        - name: REGISTRY_NAMESPACE
+          valueFrom:
+            configMapKeyRef:
+              name: project-params
+              key: REGISTRY_SERVER
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers

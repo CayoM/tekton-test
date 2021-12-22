@@ -11,8 +11,6 @@ spec:
       default: master
     - name: git-reponame
       description: Name of the git repository
-    - name: project-name
-      description: Name of the project
   tasks:
     - name: setup
       taskRef:
