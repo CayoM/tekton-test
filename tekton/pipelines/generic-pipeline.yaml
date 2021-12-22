@@ -65,11 +65,5 @@ spec:
       runAfter:
         - build-tag-push
       params:
-        - name: git-url
-          value: "$(tasks.setup.results.git-url)"
-        - name: git-revision
-          value: "$(tasks.setup.results.git-revision)"
-        - name: image-repository
-          value: "$(params.git-reponame)"
         - name: image-url
           value: "$(tasks.build-tag-push.results.image-url)"
