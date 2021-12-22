@@ -108,7 +108,7 @@ spec:
         APP_IMAGE="${REGISTRY_SERVER}/${REGISTRY_NAMESPACE}/$(params.image-repository):$(params.image-tag)"
         buildah --layers --storage-driver=$(params.STORAGE_DRIVER) bud --format=$(params.FORMAT) --tls-verify=$(params.TLSVERIFY) -f $(params.DOCKERFILE) -t ${APP_IMAGE} $(params.CONTEXT)
         set +x
-        if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]] && [[ "${REGISTRY_SERVER}" != "image-registry.openshift-image-registry.svc:5000"  ]]; then
+        if [[ -n ${REGISTRY_USER} ]] && [[ -n ${REGISTRY_PASSWORD} ]] && [[ ${REGISTRY_SERVER} != "image-registry.openshift-image-registry.svc:5000"  ]]; then
             buildah login -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD} ${REGISTRY_SERVER}
         fi
         set -x
