@@ -111,3 +111,10 @@ spec:
         echo ${REGISTRY_NAMESPACE}
         echo ${REGISTRY_USER}
         echo ${REGISTRY_PASSWORD}
+
+        echo $(params.image-repository)
+        echo $(params.image-tag)
+
+        APP_IMAGE="${REGISTRY_SERVER}/${REGISTRY_NAMESPACE}/$(params.image-repository):$(params.image-tag)"
+        
+        echo $APP_IMAGE
