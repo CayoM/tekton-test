@@ -30,7 +30,5 @@ spec:
             value: $(tt.params.gitrevision)
           - name: git-reponame
             value: $(tt.params.gitreponame)
-          - name: project-name
-            value: $(tt.params.projectname)
         pipelineRef:
           name: generic-pipeline

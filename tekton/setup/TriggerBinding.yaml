@@ -12,8 +12,6 @@ spec:
     value: $(body.repository.name)
   - name: gitevent
     value: $(header.X-GitHub-Event)
-  - name: projectname
-    value: $(extensions.projectname)
 ---
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
