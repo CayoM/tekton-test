@@ -9,6 +9,10 @@ spec:
     - name: git-revision
       description: The git revision (branch, tag, or sha) that should be built
       default: master
+    - name: git-reponame
+      description: Name of the git repository
+    - name: project-name
+      description: Name of the project
   tasks:
     - name: setup
       taskRef:
@@ -19,13 +23,13 @@ spec:
         - name: git-revision
           value: $(params.git-revision)
   
-    - name: dockerfile-lint
+    - name: lint-dockerfile
       when:
         - input: $(tasks.setup.results.dockerfile)
           operator: in
           values: ["true"]
       taskRef:
-        name: dockerfile-lint
+        name: lint-dockerfile
       runAfter:
         - setup
       params:
@@ -33,3 +37,26 @@ spec:
           value: "$(tasks.setup.results.git-url)"
         - name: git-revision
           value: "$(tasks.setup.results.git-revision)"
+
+    - name: build-tag-push
+      when:
+        - input: $(tasks.setup.results.dockerfile)
+          operator: in
+          values: ["true"]
+      taskRef:
+        name: build-tag-push
+      runAfter:
+        - lint-dockerfile
+      params:
+        - name: git-url
+          value: "$(tasks.setup.results.git-url)"
+        - name: git-revision
+          value: "$(tasks.setup.results.git-revision)"
+        - name: image-server
+          value: "de.icr.io"
+        - name: image-namespace
+          value: "$(params.project-name)-cr"
+        - name: image-repository
+          value: "$(params.git-reponame)"
+        - name: image-tag
+          value: "$(tasks.setup.results.git-revision"

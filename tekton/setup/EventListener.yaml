@@ -13,6 +13,13 @@ spec:
           params:
           - name: "eventTypes"
             value: ["pull_request", "push"]
+        - ref:
+            name: cel
+          params:
+          - name: "overlays"
+            value:
+            - key: projectname
+              expression: "body.description.split(' ')[0]"
       bindings:
         - ref: github-binding
       template:
