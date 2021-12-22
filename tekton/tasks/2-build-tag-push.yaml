@@ -112,7 +112,7 @@ spec:
         set +x
 
         if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]] && [[ "${REGISTRY_SERVER}" != "image-registry.openshift-image-registry.svc:5000"  ]]; then
-          buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "$(params.image-server)"
+          buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_SERVER}"
           echo "buildah login -u \"${REGISTRY_USER}\" -p \"xxxxx\" \"${REGISTRY_SERVER}\""
         fi
 
