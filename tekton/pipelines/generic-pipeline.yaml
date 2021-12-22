@@ -52,10 +52,6 @@ spec:
           value: "$(tasks.setup.results.git-url)"
         - name: git-revision
           value: "$(tasks.setup.results.git-revision)"
-        - name: image-server
-          value: "de.icr.io"
-        - name: image-namespace
-          value: "$(params.project-name)-cr"
         - name: image-repository
           value: "$(params.git-reponame)"
         - name: image-tag
