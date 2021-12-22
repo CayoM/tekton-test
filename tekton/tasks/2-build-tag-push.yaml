@@ -98,7 +98,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: project-params
-              key: REGISTRY_SERVER
+              key: REGISTRY_NAMESPACE
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
