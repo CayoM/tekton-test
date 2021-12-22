@@ -53,4 +53,4 @@ spec:
         - name: image-repository
           value: "$(params.git-reponame)"
         - name: image-tag
-          value: "$(tasks.setup.results.git-revision"
+          value: "$(tasks.setup.results.git-revision)"
