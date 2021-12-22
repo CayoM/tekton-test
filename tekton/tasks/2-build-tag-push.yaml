@@ -102,6 +102,8 @@ spec:
       volumeMounts:
         - mountPath: /var/lib/containers
           name: varlibcontainers
+      securityContext:
+        runAsUser: 0
       script: |
         APP_IMAGE="$(params.image-server)/$(params.image-namespace)/$(params.image-repository):$(params.image-tag)"
         
