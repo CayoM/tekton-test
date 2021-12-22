@@ -105,6 +105,8 @@ spec:
       securityContext:
         runAsUser: 0
       script: |
+        cat /tekton/scripts/*
+        
         APP_IMAGE="${REGISTRY_SERVER}/${REGISTRY_NAMESPACE}/$(params.image-repository):$(params.image-tag)"
         
         buildah --layers --storage-driver=$(params.STORAGE_DRIVER) bud --format=$(params.FORMAT) --tls-verify=$(params.TLSVERIFY) -f $(params.DOCKERFILE) -t ${APP_IMAGE} $(params.CONTEXT)
