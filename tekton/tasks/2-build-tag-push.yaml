@@ -37,6 +37,8 @@ spec:
     - name: STORAGE_DRIVER
       description: Set buildah storage driver
       default: overlay
+  results:
+    - name: image-url
   volumes:
     - name: varlibcontainers
       emptyDir: {}
