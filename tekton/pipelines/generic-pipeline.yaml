@@ -54,3 +54,22 @@ spec:
           value: "$(params.git-reponame)"
         - name: image-tag
           value: "$(tasks.setup.results.git-revision)"
+
+    - name: img-scan-ibm
+      when:
+        - input: $(tasks.setup.results.dockerfile)
+          operator: in
+          values: ["true"]
+      taskRef:
+        name: img-scan-ibm
+      runAfter:
+        - build-tag-push
+      params:
+        - name: git-url
+          value: "$(tasks.setup.results.git-url)"
+        - name: git-revision
+          value: "$(tasks.setup.results.git-revision)"
+        - name: image-repository
+          value: "$(params.git-reponame)"
+        - name: image-url
+          value: "$(tasks.build-tag-push.results.image-url)"
