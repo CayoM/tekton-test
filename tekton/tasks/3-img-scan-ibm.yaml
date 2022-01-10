@@ -43,13 +43,23 @@ spec:
               name: project-params
               key: IBM_CLOUD_REGION
               optional: true
+        - name: PERFORM_IMAGE_SCAN
+          valueFrom:
+            configMapKeyRef:
+              name: project-params
+              key: PERFORM_IMAGE_SCAN
+              optional: true
       script: |
           #!/usr/bin/env bash
           set -ex
 
           IMAGE_URL=$(params.image-url)
           REGISTRY_SERVER=$(echo $(params.image-url) | awk -F / '{print $1}')
- 
+
+          if [[ "${PERFORM_IMAGE_SCAN}" == "false" ]] || [[ -z "${PERFORM_IMAGE_SCAN}" ]]; then
+            echo "User selected to skip scanning. Skipping Vulnerability Advisor validation."
+            exit 0
+          fi
           if [[ ! "${REGISTRY_SERVER}" =~ icr.io ]]; then
             echo "The image is not stored in the IBM Cloud Image Registry. Skipping Vulnerability Advisor validation"
             exit 0
